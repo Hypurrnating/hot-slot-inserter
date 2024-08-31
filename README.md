@@ -35,9 +35,49 @@ If you wish to suggest improvements to the code, you can create a pull request a
  When you open the file, you will notice a table called `post_urls`. Just add your webhook urls to the table.
 
  ## Can I change the GUI?
- Yes. The actual GUI stays in `StarterGUI` folder. The tool just changes visibility of the GUI from `false` to `true`. \
+ If you want to change the tool to a button, or anything of that sort:
+ The actual GUI stays in `StarterGUI` folder. The tool just changes visibility of the GUI from `false` to `true`. \
  You can see this in the tool's local script, which you can find in `/src/StartPack/Utilities/LocalScript.client.lua` of this repo. \
- Whatever GUI you make just have to flip the `visible` switch on the `UtilitiesFrame` of the players GUI.
+ Whatever GUI/tool/keybind you make just have to flip the `visible` switch on the `UtilitiesFrame` of the players GUI.
+
+ If you want to change the actual GUI of the inserter, then you'd have to explore the UtilitiesFrame and make the necessary changes yourself.
 
  ## How to access the records/logs of everyone who inserted using the GUI?
-  TODO
+ You can get a READONLY COPY of the records 
+
+  in script:
+  ```lua
+  local ServerScriptService = game:GetService("ServerScriptService")
+  local GetRecords = ServerScriptService:FindFirstChild('InsertManager')
+
+  local records: table = GetRecords:Invoke()
+
+  -- Do what you want with this data
+  ```
+
+  In local script:
+  ```lua
+  local ReplicatedStorage = game:GetService("ReplicatedStorage")
+  local GetRecords = ReplicatedStorage:FindFirstChild('GetRecords')
+
+  local records: table = GetRecords:InvokeServer()
+
+  -- Do what you want with this data
+  ```
+The data returned is an array of tables, sorted by user id
+
+  ```lua
+ {
+    ["user id"] = {
+        [1] = {
+            ['utc'] = "The time at which this was inserted",
+            ['ID'] = "The asset ID which was used to fetch this from marketplace",
+            ['Model'] = "The model object for this car. Usually have to do :GetChildren[1] to get the actual car",
+            ['Product'] = "Product info for this asset from marketplace."
+        },
+        [2] = {
+            "You get the idea"
+        }
+    }
+ }
+  ```
