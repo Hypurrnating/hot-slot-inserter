@@ -3,8 +3,7 @@
  Shoutout to `outrun917` and `sjark` for the original GUI, scripts, and idea.
 
 
-[![Static Badge](https://img.shields.io/badge/download_rbxm-here?style=for-the-badge&color=blue)](https://github.com/Hypurrnating/Roblox-slot-inserter/raw/main/hsi.rbxm) \
-If you wish to suggest improvements to the code, you can create a pull request and edit the .lua scripts in /src (rojo is weird and i dont know if there are any missing. you can also just update the rbxm in the pull request and *list your changes*)
+[![Static Badge](https://img.shields.io/badge/download_rbxm-here?style=for-the-badge&color=blue)](https://github.com/Hypurrnating/Roblox-slot-inserter/raw/main/hsi.rbxm)
 
  The script creates a record of what models were insert by who and when in a lua table. It then uses that data to set a cool-down (or debounce) on each player. \
  The script also logs the insert to a discord webhook, although you should also specify a guilded webhook as a fallback.
@@ -18,15 +17,10 @@ If you wish to suggest improvements to the code, you can create a pull request a
  Download the RBXM file using the blue button above, and drop it into the game.
 
  ### 2: Move the objects to where they belong
- Open the explorer tab. \
- Import the .rbxm file and you will find a folder called HSI. Expand the folder, you will find subfolders. They have names like:
- `toReplicatedStorage` or `toStartGUI`. \
- Just expand these subfolders, and move the contents to where the title says.
- 
- For example: Expand the `toReplicatedStorage` folder, select all the things in the folder, and move them to `ReplicatedStorage` in your game. 
+ Basically just move the HSI folder which just got inserted to ServerScriptService, and the inserter will install itself when the game runs
 
  ### 3: Setup webhooks
- Now you need to open the `RemoteEventScript` file, which you should have already moved to the `ServerScriptService`.
+ Now you need to open the `RemoteEventScript` file, which is under the `ServerScriptService` IN THE HSI FOLDER, not the actual ServerScriptService.
  When you open the file, you will notice a table array called `post_urls`. Just add your webhook urls to the array.
 
  ## How to access the records/logs of everyone who inserted using the GUI?
