@@ -20,7 +20,7 @@
  Basically just move the HSI folder which just got inserted to ServerScriptService, and the inserter will install itself when the game runs
 
  ### 3: Setup webhooks
- Now you need to open the `RemoteEventScript` file, which is under the `ServerScriptService` IN THE HSI FOLDER, not the actual ServerScriptService.
+ Now you need to open the `RemoteEventScript` file, which is under the folder `ServerScriptService` (IN THE HSI FOLDER, *not the actual ServerScriptService*).
  When you open the file, you will notice a table array called `post_urls`. Just add your webhook urls to the array.
 
  ## How to access the records/logs of everyone who inserted using the GUI?
